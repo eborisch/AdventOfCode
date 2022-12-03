@@ -2,19 +2,17 @@
 
 import sys
 
-scores = {'A': {'X':3, 'Y':6, 'Z':0},
-          'B': {'X':0, 'Y':3, 'Z':6},
-          'C': {'X':6, 'Y':0, 'Z':3}}
+smat = ((3,6,0),
+        (0,3,6),
+        (6,0,3))
 
-choice = {'X':1, 'Y':2, 'Z':3}
+def imap(abc):
+    return ord(abc) - (ord('A') if abc in 'ABC' else ord('X'))
 
 SCORE = 0
 
-while y := sys.stdin.readline():
-    y = y.strip()
-    if not y:
-        continue
-    (A,B) = y.split(' ')
-    SCORE += scores[A][B] + choice[B]
+while y := sys.stdin.readline().strip():
+    (A,B) = map(imap, y.split(' '))
+    SCORE += smat[A][B] + B + 1
 
 print(SCORE)
