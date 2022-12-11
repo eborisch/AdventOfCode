@@ -46,8 +46,9 @@ class Monkey:
         fdin.readline()
 
     def process(self):
+        # In case we throw to ourselves..
         items = self.items[:]
-        self.items = []
+        self.items.clear()
         for it in items:
             self.inspect += 1
             it = self.op(it)
